@@ -17,6 +17,12 @@ To repozytorium zawiera projekty wykonane z użyciem czujnika elektromiogragiczn
 	* [Wymagania sprzętowe oraz pomiarowe](#wymagania-sprzętowe-oraz-pomiarowe)
 	* [Przygotowanie skróy do badania](#przygotowanie-skróy-do-badania)
 	* [Dobór oraz umieszczenie elektrod](#dobór-oraz-umieszczenie-elektrod)
+	* [Sensor elektromiograficzny firmy AT](#sensor-elektromiograficzny-firmy-at)
+* [Projekty](#projekty)
+	* [Układ sterowania serwomechanizmem](#układ-sterowania-serwomechanizmem)
+	* [EKG z wykresem](#ekg-z-wykresem)
+	* [Czujnik pulsu](#czujnik-pulsu)
+	* [Gra zręcznościowa](#gra-zręcznościowa)
 
 [//]: # (TOC End)
 
@@ -153,3 +159,30 @@ Przy wybieraniu miejsca umieszczenia elektrod, należy pamiętać o **jak najmni
   <img width="500" height="700" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/ElektrodyPunkty.jpg>
 </p>
 
+## Sensor elektromiograficzny firmy AT
+
+Układem, który będzie pełnił rolę sensora elektromiograficznego jest **„Muscle Sensor”** firmy *Advencer Technologies* w wersji trzeciej (2013), przedstawiony poniżej. Jest to moduł o wymiarach 2,4cm x 2,4cm, posiadający 5 pinów 2,54mm oraz wejście miniJack, za pomocą którego odbywa się podłączenie trzech elektrod pomiarowych.
+
+
+<p align="center">
+  <img width="300" height="300" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/MuscleSensor.jpg>
+</p>
+
+Piny *„+Vs”*, *„GND”* oraz *„-Vs”* służą do podpięcia napięcia **symetrycznego** o wartości między ±3V a ±30V. Komunikacja z mikrokontrolerem odbywa się za pomocą pinów *„SIG”* oraz *„GND”*. Układ posiada możliwość wzmocnienia sygnału od 0,002x do nawet 20700x przy typowym wzmocnieniu oscylującym w granicach 10350x. Wzmocnienie regulowane jest za pomocą potencjometru umieszczonego w centralnej części układu. Sygnał wyjściowy może przybierać wartości maksymalne dla dołączonego do układu zasilania, natomiast rozdzielczość sygnałowa może wynosić w warunkach typowych 2-5mV i zmieniać się w zależności od ustawionego wzmocnienia sygnału. Stosowanie w układzie wzmacniacza różnicowego dwóch elektrod pomiarowych pozwala na skuteczne eliminowanie szumów.
+
+**Układ Muscle Sensor v3 na wyjściu sygnałowym przesyła wzmocniony, wyprostowany oraz wygładzony sygnał, co pozwala na prostszą współpracę z mikrokontrolerem i jego układem przetwarzania A/C.**
+
+</br>
+<p align="center">
+  <img width="300" height="250" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/SensorSygnaly.jpg>
+</p>
+</br>
+
+Więcej informacji na temat samego czujnika można znaleźć m.in. [na stronie przedmiotu](https://www.sparkfun.com/products/retired/11776) czy w [dokumentacji produktu](https://cdn.sparkfun.com/datasheets/Sensors/Biometric/Muscle%20Sensor%20v3%20Users%20Manual.pdf). Pomimo, że układ ten został już wycofany z produkcji, jest on dalej możliwy do zakupu m.in na Aliexpress :)
+
+# Projekty
+W tej sekcji przedstawione zostaną przykładowe projekty wykonane z użyciem tego układu oraz Arduino (jak i innych podzespołów).
+## Układ sterowania serwomechanizmem
+## EKG z wykresem
+## Czujnik pulsu
+## Gra zręcznościowa

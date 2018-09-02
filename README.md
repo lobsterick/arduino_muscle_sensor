@@ -10,16 +10,15 @@ To repozytorium zawiera projekty wykonane z użyciem czujnika elektromiogragiczn
 [//]: # (TOC Begin)
 * [Wstęp teoretyczny](#wstęp-teoretyczny)
 	* [Rys historyczny](#rys-historyczny)
-	* [Mięśnie - budowa i działanie](#mięśnie-budowa-i-działanie)
+	* [Budowa i działanie mięśni](#budowa-i-działanie-mięśni)
 * [Elektromiografia](#elektromiografia)
 	* [Opis badania](#opis-badania)
 	* [Czynniki zakłócające](#czynniki-zakłócające)
-	* [Wymagania sprzętowo - pomiarowe](#wymagania-sprzętowo-pomiarowe)
+	* [Wymagania sprzętowe oraz pomiarowe](#wymagania-sprzętowe-oraz-pomiarowe)
 	* [Przygotowanie skróy do badania](#przygotowanie-skróy-do-badania)
 	* [Dobór oraz umieszczenie elektrod](#dobór-oraz-umieszczenie-elektrod)
 
 [//]: # (TOC End)
-
 
 
 # Wstęp teoretyczny
@@ -34,7 +33,7 @@ W następnym dziesięcioleciu zaczęły kształtować się podwaliny teoretyczne
 
 Okolice lat 1970-1980 były czasem prób zaciągnięcia najbardziej wyrafinowanych technik i algorytmów komputerowych, by wydobyć jak najwięcej przydatnych informacji z sygnału mięśniowego. Dzięki temu stało się możliwe badanie nawet pojedynczych włókien mięśniowych oraz badanie powierzchniowej czynności elektromiograficznej, głównie do opisu stanu funkcjonalnego mięśnia. Od 1990 roku rozwinęły się również zastosowania nowoczesnego przetwarzania sygnałów dla analizy i użytkowania sygnału mięśniowego. Dobrym przykładem może być tutaj analiza powierzchniowa czasowo-częstotliwościowa przy badaniu bólów w dolnych odcinkach pleców czy nawet analiza sygnału EMG w laryngologii.
 
-## Mięśnie - budowa i działanie
+## Budowa i działanie mięśni
 Mięśnie są podstawowymi strukturalno-funkcjonalnymi elementami motorycznymi wyższych kręgowców i bezkręgowców, pozwalającymi wykonywać skoordynowane ruchy. Odpowiedzialne są również za pracę serca oraz utrzymanie wymaganej postawy ciała. Zbudowane są z tzw. <u>tkanki mięśniowej</u>, która wraz z układem szkieletowym inicjują ruch poprzez zmniejszanie i zwiększanie długości mięśnia (odpowiednio skurcz i rozkurcz) przy wykorzystaniu energii, której głównym źródłem jest **ATP** powstające w procesie oksydacji tłuszczy i cukrów lub w procesach beztlenowych. U człowieka, liczba mięśni wacha się w granicach 450 do 500, co stanowi około 40% masy ciała męskiego lub 35% masy ciała damskiego. Wyróżniamy 3 rodzaje mięśni: <u>szkieletowe</u>, <u>sercowe</u> oraz <u>
 gładkie</u>. Budowa przekrojowa mięśnia została przedstawiona poniżej.
 </br></br>
@@ -118,7 +117,7 @@ W związku z charakterem pomiarów elektromiograficznych, ich wyniki mogą być 
 * różnice w przewodnictwie tkankowym – zmiany parametrów przewodnictwa tkanek pod wpływem różnych czynników, uniemożliwiające dokładny pomiar;
 * jakość elementów elektronicznych – szumy generowanie na układach i obwodach elektronicznych.
 
-## Wymagania sprzętowo - pomiarowe
+## Wymagania sprzętowe oraz pomiarowe
 
 Urządzenia służące do odczytu sygnału EMG powinny spełniać pewne założenia pozwalające im na prawidłowe funkcjonowanie. 
 

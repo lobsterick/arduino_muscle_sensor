@@ -1,5 +1,5 @@
 int emg = A0;
-int dioda = 8;
+int dioda = 13;
 int buzzer = 11;
 int odczyt;
 int odczytMin = 1023;
@@ -7,9 +7,9 @@ int odczytMax = 0;
 int polowaEKG = 0;
 
 void setup() {
-  pinMode(8, OUTPUT);
+  pinMode(dioda, OUTPUT);
   pinMode(A0, INPUT);
-  pinMode(11, OUTPUT);
+  pinMode(buzzer, OUTPUT);
   Serial.begin(9600);
 
   /// PROCEDURA KALIBRACJI

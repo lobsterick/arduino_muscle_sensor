@@ -4,7 +4,7 @@
 
 ---
 
-To repozytorium zawiera projekty wykonane z użyciem czujnika elektromiogragicznego **Muscle Sensor v3** firmy *Advencer Technology*, wykorzystanego we współpracy z **Arduino Leonardo**.
+To repozytorium zawiera projekty wykonane z użyciem czujnika elektromiograficznego **Muscle Sensor v3** firmy *Advencer Technology*, wykorzystanego we współpracy z **Arduino Leonardo**.
 
 # Spis treści
 [//]: # (TOC Begin)

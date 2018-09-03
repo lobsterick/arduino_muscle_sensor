@@ -24,11 +24,12 @@ To repozytorium zawiera projekty wykonane z użyciem czujnika elektromiogragiczn
 		* [Algorytm programu](#algorytm-programu)
 		* [Opis działania](#opis-działania)
 		* [Przykładowe odpowiedzi czujnika](#przykładowe-odpowiedzi-czujnika)
-	* [EKG z wykresem](#ekg-z-wykresem)
+	* [EKG](#ekg)
 	* [Czujnik pulsu](#czujnik-pulsu)
-	* [Gra zręcznościowa BOMB_Emg](#gra-zręcznościowa-bomb_emg)
+	* [Gra zręcznościowa](#gra-zręcznościowa)
 
 [//]: # (TOC End)
+
 
 
 # Wstęp teoretyczny
@@ -187,6 +188,7 @@ Piny *„+Vs”*, *„GND”* oraz *„-Vs”* służą do podpięcia napięcia 
 # Projekty
 W tej sekcji przedstawione zostaną przykładowe projekty wykonane z użyciem tego układu oraz Arduino (jak i innych podzespołów). 
 ## Układ sterowania serwomechanizmem
+<u>**Kod programu sterującego wraz z komentarzem został zamieszczony w pliku: [EMG_servo.ino](https://github.com/lobsterick/arduino_muscle_sensor/blob/master/EMG_servo/EMG_servo.ino)**</u>
 ### Podłączenie układu
 * czujnik EMG podłączony został do źródła zasilania złożonego z układu dwóch baterii 9V połączonych szeregowo, a następnie przyłączonych odpowiednio dodatnim biegunem baterii do wejścia „+V”, ujemnym biegunem baterii do wejścia „V-” oraz miejscem połączenia dwóch baterii do wejścia „GND”.
 
@@ -276,6 +278,31 @@ Jak widać na wykresie, wartość napięcia oscyluje w granicach 10-12 jednostek
 
 Z racji domyślnego autoskalowania wykresu, można zauważyć tu dużą różnicę, sięgającą nawet trzykrotności sygnału spoczynkowego podczas napięcia mięśnia. Także różnice w wysokości „pików” na wykresie dają podstawy do sterowania w większej ilości zakresów niż jedynie pomiędzy stanem wysokim i niskim.
 
-## EKG z wykresem
+## EKG
+<u>**Kod programu sterującego wraz z komentarzem został zamieszczony w pliku: [EMG_ekg.ino](https://github.com/lobsterick/arduino_muscle_sensor/blob/master/EMG_ekg/EMG_ekg.ino)**</u>
+
+Działanie tego programu polega na sygnalizowaniu dźwiękowym (za pomocą buzzera) wykrycia uderzenia serca. Uderzenie to jest rozumiane jako przekroczenie wartości połowy zakresu pomiarowego, wyznaczonego za pomocą kalibracji odbywającej się przed pomiarem. Kalibracja polega na 5 sekundowym  poszukiwaniu wartości granicznych, zarejestrowanych przez układ, a jej rozpoczęcie i zakończenie jest oznaczane za pomocą wbudowanej diody L (odpowiednio jej uruchomienie i wyłączenie).
+Schemat podłączenia zamieszczono poniżej - zgodnie z kodem programu buzzer powinien zostać podpięty pod port 11 (należy zwrócić szczególną uwagę na kierunek umieszczenia).
+
+</br>
+<p align="center">
+  <img width="800" height="500" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/SchematEKG.jpg>
+</p>
+</br>
+
+
 ## Czujnik pulsu
-## Gra zręcznościowa BOMB_Emg
+<u>**Kod programu sterującego wraz z komentarzem został zamieszczony w pliku: [EMG_puls.ino](https://github.com/lobsterick/arduino_muscle_sensor/blob/master/EMG_puls/EMG_puls.ino)**</u>
+
+Działanie tego programu polega na sygnalizowaniu świetlnym wykrycia uderzenia serca oraz podawaniu - poprzez *Monitor Szeregowy* - zmierzonej wartości pulsu w ciagu ostatnich 10 sekund. Uderzenie to jest rozumiane jako przekroczenie wartości połowy zakresu pomiarowego, wyznaczonego za pomocą kalibracji odbywającej się przed pomiarem. Kalibracja polega na 5 sekundowym  poszukiwaniu wartości granicznych, zarejestrowanych przez układ, a jej rozpoczęcie i zakończenie jest oznaczane za pomocą wbudowanej diody L (odpowiednio jej uruchomienie i wyłączenie).
+Schemat podłączenia zamieszczono poniżej.
+
+</br>
+<p align="center">
+  <img width="800" height="500" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/SchematPuls.jpg>
+</p>
+</br>
+
+## Gra zręcznościowa
+
+<u>**Kod programu sterującego wraz z komentarzem został zamieszczony w pliku: [EMG_game.ino](https://github.com/lobsterick/arduino_muscle_sensor/blob/master/EMG_game/EMG_game.ino)**</u>

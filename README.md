@@ -15,14 +15,18 @@ To repozytorium zawiera projekty wykonane z użyciem czujnika elektromiogragiczn
 	* [Opis badania](#opis-badania)
 	* [Czynniki zakłócające](#czynniki-zakłócające)
 	* [Wymagania sprzętowe oraz pomiarowe](#wymagania-sprzętowe-oraz-pomiarowe)
-	* [Przygotowanie skróy do badania](#przygotowanie-skróy-do-badania)
+	* [Przygotowanie skóry do badania](#przygotowanie-skóry-do-badania)
 	* [Dobór oraz umieszczenie elektrod](#dobór-oraz-umieszczenie-elektrod)
 	* [Sensor elektromiograficzny firmy AT](#sensor-elektromiograficzny-firmy-at)
 * [Projekty](#projekty)
 	* [Układ sterowania serwomechanizmem](#układ-sterowania-serwomechanizmem)
+		* [Podłączenie układu](#podłączenie-układu)
+		* [Algorytm programu](#algorytm-programu)
+		* [Opis działania](#opis-działania)
+		* [Przykładowe odpowiedzi czujnika](#przykładowe-odpowiedzi-czujnika)
 	* [EKG z wykresem](#ekg-z-wykresem)
 	* [Czujnik pulsu](#czujnik-pulsu)
-	* [Gra zręcznościowa](#gra-zręcznościowa)
+	* [Gra zręcznościowa BOMB_Emg](#gra-zręcznościowa-bomb_emg)
 
 [//]: # (TOC End)
 
@@ -140,7 +144,7 @@ Jednym z najważniejszych problemów napotykanych podczas doboru parametrów tec
 
 **W przypadku badania elektromiograficznego, częstotliwość zawiera się w granicach 10Hz i 250Hz (dla prac naukowych nawet do 500Hz), więc odpowiednia częstotliwość próbkowania to co najmniej 1000Hz (dwukrotność pasma EMG).**
 
-## Przygotowanie skróy do badania
+## Przygotowanie skóry do badania
 
 Jakość otrzymanego sygnału przy badaniu elektromiograficznym w znacznej mierze zależy od poprawnego przygotowania skóry i umiejscowienia elektrod. Nie istnieje jedyny słuszny sposób przygotowania do badania – jest to kwestia arbitralna. Zalecane jest sprawdzenie impedancji skórnej i dobranie właściwych do niej warunków. 
 
@@ -178,11 +182,100 @@ Piny *„+Vs”*, *„GND”* oraz *„-Vs”* służą do podpięcia napięcia 
 </p>
 </br>
 
-Więcej informacji na temat samego czujnika można znaleźć m.in. [na stronie przedmiotu](https://www.sparkfun.com/products/retired/11776) czy w [dokumentacji produktu](https://cdn.sparkfun.com/datasheets/Sensors/Biometric/Muscle%20Sensor%20v3%20Users%20Manual.pdf). Pomimo, że układ ten został już wycofany z produkcji, jest on dalej możliwy do zakupu m.in na Aliexpress :)
+**Więcej informacji na temat samego czujnika, jak i sposobu jego podłączenia, można znaleźć m.in. [na stronie przedmiotu](https://www.sparkfun.com/products/retired/11776) czy w [dokumentacji produktu](https://cdn.sparkfun.com/datasheets/Sensors/Biometric/Muscle%20Sensor%20v3%20Users%20Manual.pdf). Pomimo, że układ ten został już wycofany z produkcji, jest on dalej możliwy do zakupu m.in na Aliexpress :)**
 
 # Projekty
-W tej sekcji przedstawione zostaną przykładowe projekty wykonane z użyciem tego układu oraz Arduino (jak i innych podzespołów).
+W tej sekcji przedstawione zostaną przykładowe projekty wykonane z użyciem tego układu oraz Arduino (jak i innych podzespołów). 
 ## Układ sterowania serwomechanizmem
+### Podłączenie układu
+* czujnik EMG podłączony został do źródła zasilania złożonego z układu dwóch baterii 9V połączonych szeregowo, a następnie przyłączonych odpowiednio dodatnim biegunem baterii do wejścia „+V”, ujemnym biegunem baterii do wejścia „V-” oraz miejscem połączenia dwóch baterii do wejścia „GND”.
+
+* tak przygotowany układ został podłączony do płytki Arduino
+ poprzez połączenie pinu „SIG” na układzie czujnika do portu 
+analogowego A0 w Arduino oraz zwarcie masy czujnika z masą Arduino;
+
+* serwomechanizm został podłączony wyjściem sterującym pod port sygnałowy 3, natomiast zasilony odpowiednio poprzez przyłączenie do wyjścia 5V oraz GND;
+
+* dwie diody podłączone zostały do wyjść 2 oraz 4, a następnie do masy płytki GND;
+
+* płytka Arduino została podpięta zarówno pod źródło zasilania (pojedyncza bateria 9V), jak i do komputera (w celu komunikowania się z układem);
+
+</br>
+<p align="center">
+  <img width="1200" height="700" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/WidokUkladu.jpg>
+</p>
+</br>
+
+* elektrody podłączone zostały do Muscle Sensor v3 oraz do mięśni przedramienia.
+
+</br>
+<p align="center">
+  <img width="800" height="600" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/UmiejscowienieElektrod.jpg>
+</p>
+</br>
+
+### Algorytm programu
+
+</br>
+<p align="center">
+  <img width="800" height="700" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/Algorytm.jpg>
+</p>
+</br>
+
+### Opis działania
+
+* po podłączeniu układu, przechodzi on w tryb dziesięciosekundowej kalibracji, podczas której należy kilkukrotnie napiąć odpowiedni mięsień, a następnie go zrelaksować. Program ustala wtedy wartości minimalne (dla spoczynku) i maksymalne (dla napięcia), które będą potrzebne w późniejszym czasie do  różnicowania stanów napięcia mięśniowego. W tym trybie zapalone są obie diody LED do momentu zakończenia kalibracji. Uruchamiany jest także interfejs szeregowy do połączenia z komputerem. Po kalibracji, serwo ustawia się na pozycji wyjściowej;
+
+</br>
+<p align="center">
+  <img width="500" height="400" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/EtapKalibracji.jpg>
+</p>
+</br>
+
+* po wstępnej kalibracji, układ na bieżąco bada odczyty czujnika EMG. W momencie wykrycia napięcia, różnicuje on jego siłę na mniejszą oraz większą i – w zależności od odczytanej wartości – wykonuje odpowiednio ruch w stronę prawą z zapaleniem diody prawej oraz w stronę lewą z zapaleniem diody lewej;
+
+</br>
+<p align="center">
+  <img width="500" height="400" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/LekkieNapiecie.jpg>
+</p>
+
+</br>
+<p align="center">
+  <img width="500" height="400" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/ZdecydowaneNapiecie.jpg>
+</p>
+</br>
+
+### Przykładowe odpowiedzi czujnika
+
+Efekty działania programu można też obserwować w narzędziu 
+dostępnym bezpośrednio w ArduinoIDE, czyli **„Kreślarce”**. 
+
+</br>
+<p align="center">
+  <img width="800" height="400" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/ParametrOdczyt.jpg>
+</p>
+</br>
+
+Jak widać na powyższym wykresie, opisany sygnał odpowiada wzorowi wartości „odczyt” kolejno 2,1,2,2,1,2,2,1,2.  Odczyt 2 świadczy o wykonaniu akcji powiązanej z mocniejszą reakcją mięśniową, natomiast odczyt 1 świadczy o wykonaniu akcji powiązanej ze słabszą odpowiedzią mięśniową. Pozwala to bezpośrednio stwierdzić prawidłowość działania programu sterowania.
+
+Możliwe jest także wysyłanie do Monitora Szeregowego wartości bezpośredniego odczytu z Muscle Sensor – by tego dokonać, należy zmienić zmienną w linii 61 z „odczyt” na  „pierwotny”. Wynikiem takiego działania scenariusz przedstawiony będzie w dwóch poniższych rysunkach.
+
+</br>
+<p align="center">
+  <img width="800" height="500" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/SpoczynekMiesnia.jpg>
+</p>
+</br>
+
+Jak widać na wykresie, wartość napięcia oscyluje w granicach 10-12 jednostek. Niejednorodny wynik spowodowany jest niedoskonałością układu pomiarowego. Dla porównania, wykres podczas pracy mięśnia przedstawiony jest poniżej.
+
+</br>
+<p align="center">
+  <img width="800" height="500" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/AktywnoscMiesnia.jpg>
+</p>
+</br>
+
+Z racji domyślnego autoskalowania wykresu, można zauważyć tu dużą różnicę, sięgającą nawet trzykrotności sygnału spoczynkowego podczas napięcia mięśnia. Także różnice w wysokości „pików” na wykresie dają podstawy do sterowania w większej ilości zakresów niż jedynie pomiędzy stanem wysokim i niskim.
+
 ## EKG z wykresem
 ## Czujnik pulsu
-## Gra zręcznościowa
+## Gra zręcznościowa BOMB_Emg

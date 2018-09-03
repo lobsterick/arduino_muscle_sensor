@@ -110,7 +110,7 @@ Fala depolaryzacyjna, formowana przez cykliczne depolaryzacje i repolaryzacje, p
 
 Zgodnie ze schematem, w punkcie T1 pojawia się potencjał czynnościowy przemieszczający się w kierunku pary elektrod, natomiast różnica potencjałów między elektrodami osiąga najwyższą wartość w punkcie T2. W momencie dotarcia dipola do punktu T3, nastąpi przecięcie przez potencjał linii zerowej i osiągnięcie maksimum w punkcje T2, który jest najbliżej drugiej elektrody. Na podstawie powyższego można stwierdzić, że jednobiegunowy potencjał czynnościowy tworzy dwubiegunowy sygnał podczas wzmocnienia różnicowego. Para elektrod rejestruje wszystkie unerwione włókna w pojedynczej jednostce motorycznej, a suma tych włókien z kolei składa się na trójfazowy **MUAP** (z ang. *„Motor Unit Action Potential”*) o różnym kształcie zależnym od miejsca przyłożenia elektrody. Przy użyciu elektrod powierzchniowych, w miejscu rejestracji sygnału MUAP nakładają się, tworząc zapis interferencyjny.
 
-**Wynik sygnałowy otrzymywany z nakładania się sygnałów MUAP, nazywamy surowym sygnałem EMG (*przykładowa zaprezentowana poniżej*).**
+**Wynik sygnałowy otrzymywany z nakładania się sygnałów MUAP, nazywamy surowym sygnałem EMG (*przykładowy zaprezentowany poniżej*).**
 
 <p align="center">
   <img width="500" height="300" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/SurowyEMG.jpg>
@@ -156,7 +156,7 @@ Zalecane jest również usunięcie włosów ze skóry mającej kontakt z elektro
 
 Najczęściej stosowanym typem elektrod są **elektrody powierzchniowe** ze względu na swój nieinwazyjny charakter, okupiony jednak rejestrowaniem potencjałów z mięśni powierzchniowych. Najpopularniejsze są preżelowane elektrody srebro/chlorek srebra, które posiadają szereg zalet, m.in. higieniczność elektrod jednorazowych. Średnica obszaru przewodzenia dobrych jakościowo elektrod powinna wynosić poniżej 1cm (zmniejsza to zjawisko *„Cross-talk”*). Najpowszechniejsze są elektrody z żelem mokrym (o lepszym przewodnictwie i niższej odporności) oraz z żelem lepkim (o prostej wymianie przy błędnej aplikacji elektrody).
 
-Przy wybieraniu miejsca umieszczenia elektrod, należy pamiętać o **jak najmniejszej odległości dzielącej dwie elektrody** (zwiększającej selektywność badanych mięśni), u**mieszczaniu ich w najwyraźniejszej części środkowej brzuśca mięśniowego ze zwróceniem szczególnej uwagi na położenie elektrody w masie aktywnej bez względu na skurcz i rozkurcz mięśnia** oraz **stosowaniu standaryzowanych map ze zmierzonymi odległościami i pozycjami elektrod**. Na pacjencie należy także umieścić przynajmniej jedną **elektrodę referencyjną** w miejscach nieaktywnych, znajdujących się w pobliżu badanego mięśnia np. łokieć, czoło.
+Przy wybieraniu miejsca umieszczenia elektrod, należy pamiętać o **jak najmniejszej odległości dzielącej dwie elektrody** (zwiększającej selektywność badanych mięśni), **umieszczaniu ich w najwyraźniejszej części środkowej brzuśca mięśniowego ze zwróceniem szczególnej uwagi na położenie elektrody w masie aktywnej bez względu na skurcz i rozkurcz mięśnia** oraz **stosowaniu standaryzowanych map ze zmierzonymi odległościami i pozycjami elektrod**. Na pacjencie należy także umieścić przynajmniej jedną **elektrodę referencyjną** w miejscach nieaktywnych, znajdujących się w pobliżu badanego mięśnia np. łokieć, czoło.
 
 </br>
 <p align="center">

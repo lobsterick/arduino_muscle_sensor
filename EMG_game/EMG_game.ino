@@ -113,7 +113,7 @@ void setup() {
   delay(500);
   Serial.println("Osoba, u której bomba wybuchnie ... przegrywa.");
   delay(500);
-  Serial.println("Pamiętaj - znajdź swój własny sposób naj najefektywniejszego przepychania bomby w stronę rywala!");
+  Serial.println("Pamiętaj - znajdź swój własny sposób najefektywniejszego przepychania bomby w stronę rywala!");
   delay(5000);
 
   Serial.println("Gra rozpocznie się za...");

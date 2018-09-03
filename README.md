@@ -26,10 +26,9 @@ To repozytorium zawiera projekty wykonane z użyciem czujnika elektromiogragiczn
 		* [Przykładowe odpowiedzi czujnika](#przykładowe-odpowiedzi-czujnika)
 	* [EKG](#ekg)
 	* [Czujnik pulsu](#czujnik-pulsu)
-	* [Gra zręcznościowa](#gra-zręcznościowa)
+	* [Gra zręcznościowa EMG_BOMB](#gra-zręcznościowa-emg_bomb)
 
 [//]: # (TOC End)
-
 
 
 # Wstęp teoretyczny
@@ -186,7 +185,7 @@ Piny *„+Vs”*, *„GND”* oraz *„-Vs”* służą do podpięcia napięcia 
 **Więcej informacji na temat samego czujnika, jak i sposobu jego podłączenia, można znaleźć m.in. [na stronie przedmiotu](https://www.sparkfun.com/products/retired/11776) czy w [dokumentacji produktu](https://cdn.sparkfun.com/datasheets/Sensors/Biometric/Muscle%20Sensor%20v3%20Users%20Manual.pdf). Pomimo, że układ ten został już wycofany z produkcji, jest on dalej możliwy do zakupu m.in na Aliexpress :)**
 
 # Projekty
-W tej sekcji przedstawione zostaną przykładowe projekty wykonane z użyciem tego układu oraz Arduino (jak i innych podzespołów). 
+W tej sekcji przedstawione zostaną przykładowe projekty wykonane z użyciem tego układu oraz Arduino (jak i innych podzespołów). By zachować lepszą czytelność oraz umożliwić rozbudowywanie bazy projektów, **szczegółowy** opis podłączeń został zrealizoway jedynie w pierwszym projekcie.
 ## Układ sterowania serwomechanizmem
 <u>**Kod programu sterującego wraz z komentarzem został zamieszczony w pliku: [EMG_servo.ino](https://github.com/lobsterick/arduino_muscle_sensor/blob/master/EMG_servo/EMG_servo.ino)**</u>
 ### Podłączenie układu
@@ -290,6 +289,13 @@ Schemat podłączenia zamieszczono poniżej - zgodnie z kodem programu buzzer po
 </p>
 </br>
 
+Rozmieszczenie elektrod powinno być tożsame z podłączeniem Trójkąta Einthovena, np. tak jak poniżej.
+
+</br>
+<p align="center">
+  <img width="300" height="250" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/EKGelectrodes.jpg>
+</p>
+</br>
 
 ## Czujnik pulsu
 <u>**Kod programu sterującego wraz z komentarzem został zamieszczony w pliku: [EMG_puls.ino](https://github.com/lobsterick/arduino_muscle_sensor/blob/master/EMG_puls/EMG_puls.ino)**</u>
@@ -303,6 +309,51 @@ Schemat podłączenia zamieszczono poniżej.
 </p>
 </br>
 
-## Gra zręcznościowa
+Rozmieszczenie elektrod powinno być tożsame z podłączeniem Trójkąta Einthovena, np. tak jak poniżej.
+
+</br>
+<p align="center">
+  <img width="300" height="250" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/EKGelectrodes.jpg>
+</p>
+</br>
+
+## Gra zręcznościowa EMG_BOMB
 
 <u>**Kod programu sterującego wraz z komentarzem został zamieszczony w pliku: [EMG_game.ino](https://github.com/lobsterick/arduino_muscle_sensor/blob/master/EMG_game/EMG_game.ino)**</u>
+
+***EMG_BOMB*** to gra dwuosobowa, w której zadaniem grających jest posłanie bomby (reprezentowanej przez szereg świecących diod) w kierunku przeciwnika, powodując jej wybuch z dala od własnego pola. Osoby grające podłączają się do dwóch osobnych układów EMG poprzez układ trzech elektrod, umieszczonych na konkretnej grupie mięśniowej (np. bicepsie) i poprzez szybkie napinanie mięśni, starają się spowodować *"wybuch"* (sygnalizowany migotaniem skrajnej diody) po stronie przeciwnika. Grę i jej postępy można na bieżąco śledzić w *Monitorze Szeregowym*. Poniżej przedstawiono schemat podłączenia układu.
+
+</br>
+<p align="center">
+  <img width="800" height="800" src=https://raw.githubusercontent.com/lobsterick/arduino_muscle_sensor/master/Pictures/SchematGame.jpg>
+</p>
+</br>
+
+Gra rozpoczyna się kalibracją, sygnalizowaną świeceniem dwóch diod, w której gracy muszą kilkukrotnie napiąć mięsień, do którego podłączone są elektrody - jest ona sygnalizowana poniższym komunikatem:
+
+> Procedura kalibracji polega na kilkukrotnym napięciu mięśnia, by program mógł znaleźć wartości graniczne jego działania. Macie na to 10 sekund.
+
+Po 10 sekundach diody wyłączają się, a na Monitorze Szeregowym ukazują się zasady gry:
+
+> Gra polega na powodowaniu jak najszybszego i najmocniejszego skurczu w zadanym mięśniu, by przepchnąć bombę (reprezentowaną przez szereg diód) w stronę Rywala. Osoba, u której bomba wybuchnie ... przegrywa. Pamiętaj - znajdź swój własny sposób najefektywniejszego przepychania bomby w stronę rywala!
+
+Następnie zaczyna się odliczanie od 10, a po jego zakończeniu rozpoczyna się gra - jest to sygnalizowane przejściem *"fali światła"* przez diody. Przyznawane punkty są sygnalizowane poprzed komunikat:
+
+> **Punkt dla** *lewego / prawego*
+
+Przesunięcie bomby również powoduje pojawienie się stosownej informacji:
+
+> **Bomba w** *lewo / prawo*
+
+W momencie wygranej, ukazuje się komunikat:
+
+> **Wygrał** *LEWY / PRAWY*
+
+Przykładowa gra w formie wideo została zaprezentowana poniżej (ze względu na brak drugiego układu *Muscle Sensor*, gra toczy się jednostronnie):
+
+</br>
+
+<div style=text-align:center;"> <a href="https://youtu.be/TTjXHsss3ng"> <img src=https://raw.githubusercontent.com/lobsterick/raspberry_pupilometr_se/master/Pictures/MiniaturkaVideo.jpg style="height: 400px"/> </a> </div> 
+</br></br>
+
+**<u>Ponowna gra możliwa jest po restarcie urządzenia.</u>**
